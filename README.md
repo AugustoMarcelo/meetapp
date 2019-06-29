@@ -6,6 +6,10 @@ app agregador de eventos para desenvolvedores chamado Meetapp (um acrônimo à M
 
 Abaixo estão descritas as funcionalidades da aplicação.
 
+### Gerenciamento de arquivos
+
+Rota para upload de arquivos que cadastra em uma tabela o caminho e o nome do arquivo e retorna todos os dados do arquivo cadastrado
+
 ### Autenticação
 
 Permite que um usuário se autentique utilizando e-mail e senha.
