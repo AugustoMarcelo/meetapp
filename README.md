@@ -10,6 +10,20 @@ Abaixo estão descritas as funcionalidades da aplicação.
 
 Rota para upload de arquivos que cadastra em uma tabela o caminho e o nome do arquivo e retorna todos os dados do arquivo cadastrado
 
+### Gerenciamento de meetups
+
+Para cadastrar um meetup na plataforma, o usuário deverá informar obrigatoriamente os seguintes atributos
+    - Título
+    - Descrição
+    - Localização
+    - Data/Hora
+    - Banner (imagem)
+
+Não será possível cadastrar meetups com datas que já passaram.
+O usuário poderá editar todos os dados de meetups que ainda não aconteceram e que ele é o organizador.
+Rota para listar os meetups que são organizados pelo usuário logado.
+O usuário poderá cancelar meetups organizados por ele e que ainda não aconteceram. O cancelamento deletará o meetup da base de dados.
+
 ### Autenticação
 
 Permite que um usuário se autentique utilizando e-mail e senha.
