@@ -13,11 +13,11 @@ Rota para upload de arquivos que cadastra em uma tabela o caminho e o nome do ar
 ### Gerenciamento de meetups
 
 Para cadastrar um meetup na plataforma, o usuário deverá informar obrigatoriamente os seguintes atributos
-    - Título
-    - Descrição
-    - Localização
-    - Data/Hora
-    - Banner (imagem)
+- Título
+- Descrição
+- Localização
+- Data/Hora
+- Banner (imagem)
 
 Não será possível cadastrar meetups com datas que já passaram.
 O usuário poderá editar todos os dados de meetups que ainda não aconteceram e que ele é o organizador.
