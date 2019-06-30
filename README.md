@@ -27,6 +27,14 @@ Rota para listar os meetups que são organizados pelo usuário logado.
 
 O usuário poderá cancelar meetups organizados por ele e que ainda não aconteceram. O cancelamento deletará o meetup da base de dados.
 
+### Listagem de Meetup
+
+Rota que lista os meetups com filtro por data (não por hora) e os resultados vêm paginados em 10 itens por página. Segue exemplo da rota:
+
+```
+http://localhost:3333/meetups?date=2019-07-01&page=2
+```
+
 ### Autenticação
 
 Permite que um usuário se autentique utilizando e-mail e senha.
