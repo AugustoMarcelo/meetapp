@@ -45,6 +45,12 @@ Rota que lista os meetups com filtro por data (não por hora) e os resultados v�
 http://localhost:3333/meetups?date=2019-07-01&page=2
 ```
 
+### Listagem de inscrições
+
+Rota para listar os meetups que o usuário logado está inscrito
+
+Serão listados apenas os meetups que ainda não aconteceram e ordenados pelas datas mais próximas.
+
 ### Autenticação
 
 Permite que um usuário se autentique utilizando e-mail e senha.
