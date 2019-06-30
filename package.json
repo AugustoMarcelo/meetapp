@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "migrate": "sequelize db:migrate"
+    "migrate": "sequelize db:migrate",
+    "undo": "sequelize db:migrate:undo"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
