@@ -20,6 +20,8 @@ routes.use(authMiddleware);
 
 routes.put('/users', UserController.update);
 
+// Route to list meetups
+routes.get('/meetups', MeetupController.index);
 routes.post('/meetups', MeetupController.store);
 // Route to list meetups from logged user
 routes.get('/mymeetups', UserMeetupsController.index);
@@ -27,8 +29,6 @@ routes.get('/mymeetups', UserMeetupsController.index);
 routes.put('/mymeetups/:id', UserMeetupsController.update);
 // Route to delete meetups
 routes.delete('/mymeetups/:id', UserMeetupsController.delete);
-// Route to list meetups
-routes.get('/meetups', MeetupController.index);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
