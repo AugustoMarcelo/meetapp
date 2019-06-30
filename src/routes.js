@@ -31,6 +31,7 @@ routes.put('/mymeetups/:id', UserMeetupsController.update);
 // Route to delete meetups
 routes.delete('/mymeetups/:id', UserMeetupsController.delete);
 
+routes.get('/mysubscriptions', SubscriptionController.index);
 routes.post('/subscriptions', SubscriptionController.store);
 
 routes.post('/files', upload.single('file'), FileController.store);
