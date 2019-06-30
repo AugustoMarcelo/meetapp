@@ -27,6 +27,16 @@ Rota para listar os meetups que são organizados pelo usuário logado.
 
 O usuário poderá cancelar meetups organizados por ele e que ainda não aconteceram. O cancelamento deletará o meetup da base de dados.
 
+## Inscrição no Meetup
+
+O usuário poderá se inscrever em meetups que não organiza
+
+O usuário não pode se inscrever em meetups que já aconteceram.
+
+O usuário não pode se inscrever no mesmo meetup duas vezes.
+
+O usuário não pode se increver em dois meetups que acontecem no mesmo horário.
+
 ### Listagem de Meetup
 
 Rota que lista os meetups com filtro por data (não por hora) e os resultados vêm paginados em 10 itens por página. Segue exemplo da rota:
