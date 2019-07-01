@@ -1,9 +1,12 @@
 import * as Yup from 'yup';
 import { Op } from 'sequelize';
-
+import { format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import Subscription from '../models/Subscription';
 import Meetup from '../models/Meetup';
 import User from '../models/User';
+import Notification from '../schemas/Notification';
+import Mail from '../../lib/Mail';
 
 class SubscriptionController {
     async index(req, res) {
@@ -79,7 +82,17 @@ class SubscriptionController {
                 .json({ error: 'You already subscribe for this meetup' });
         }
 
-        const meetup = await Meetup.findByPk(meetup_id);
+        // const meetup = await Meetup.findByPk(meetup_id);
+        const meetup = await Meetup.findOne({
+            where: { id: meetup_id },
+            include: [
+                {
+                    model: User,
+                    as: 'user',
+                    attributes: ['id', 'name', 'email'],
+                },
+            ],
+        });
 
         const checkMeetupTime = await Subscription.findOne({
             where: { user_id: req.userId },
@@ -103,6 +116,35 @@ class SubscriptionController {
         const subscription = await Subscription.create({
             meetup_id,
             user_id: req.userId,
+        });
+
+        /**
+         * Notify user who created the meetup
+         */
+        const user = await User.findByPk(req.userId);
+        const formattedDate = format(
+            meetup.date,
+            "dd 'de' MMMM', às' H:mm'h'",
+            { locale: pt }
+        );
+        await Notification.create({
+            content: `${user.name} acabou de confirmar presença no meetup ${meetup.title}, dia ${formattedDate}`,
+            user: req.userId,
+        });
+
+        await Mail.sendMail({
+            to: `${meetup.user.name} <${meetup.user.email}>`,
+            subject: 'Inscrição no Meetup',
+            template: 'subscription',
+            context: {
+                creator: meetup.user.name,
+                meetupTitle: meetup.title,
+                meetupDate: format(meetup.date, "dd 'de' MMMM', às' H:mm'h'", {
+                    locale: pt,
+                }),
+                userName: user.name,
+                userEmail: user.email,
+            },
         });
 
         return res.json(subscription);
