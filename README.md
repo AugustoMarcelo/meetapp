@@ -37,6 +37,8 @@ O usuário não pode se inscrever no mesmo meetup duas vezes.
 
 O usuário não pode se increver em dois meetups que acontecem no mesmo horário.
 
+Sempre que um usuário se inscrever no meetup, um e-mail é enviado ao organizador contendo os dados relacionados ao usuário inscrito.
+
 ### Listagem de Meetup
 
 Rota que lista os meetups com filtro por data (não por hora) e os resultados vêm paginados em 10 itens por página. Segue exemplo da rota:
