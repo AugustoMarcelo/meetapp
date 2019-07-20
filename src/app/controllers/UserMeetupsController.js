@@ -35,6 +35,28 @@ class UserMeetupsController {
         return res.json(myMeetups);
     }
 
+    async show(req, res) {
+        const meetup = await Meetup.findOne({
+            where: { id: req.params.id, user_id: req.userId },
+            attributes: ['id', 'title', 'description', 'location', 'date'],
+            include: [
+                {
+                    model: File,
+                    as: 'banner',
+                    attributes: ['id', 'url', 'path'],
+                },
+            ],
+        });
+
+        if (!meetup) {
+            return res.status(401).json({
+                error: "You can't see meetups that do not belong to you.",
+            });
+        }
+
+        return res.json(meetup);
+    }
+
     async update(req, res) {
         const schema = Yup.object().shape({
             title: Yup.string(),
