@@ -27,6 +27,8 @@ routes.get('/meetups', MeetupController.index);
 routes.post('/meetups', MeetupController.store);
 // Route to list meetups from logged user
 routes.get('/mymeetups', UserMeetupsController.index);
+// Route to list specific meetup form logged user
+routes.get('/mymeetups/:id', UserMeetupsController.show);
 // Route to update meetups
 routes.put('/mymeetups/:id', UserMeetupsController.update);
 // Route to delete meetups
