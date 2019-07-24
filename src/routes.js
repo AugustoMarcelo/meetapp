@@ -36,6 +36,7 @@ routes.delete('/mymeetups/:id', UserMeetupsController.delete);
 
 routes.get('/mysubscriptions', SubscriptionController.index);
 routes.post('/subscriptions', SubscriptionController.store);
+routes.delete('/subscriptions/:id', SubscriptionController.delete);
 
 routes.get('/notifications', NotificationController.index);
 routes.put('/notifications/:id', NotificationController.update);
