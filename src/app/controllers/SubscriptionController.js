@@ -5,6 +5,7 @@ import pt from 'date-fns/locale/pt';
 import Subscription from '../models/Subscription';
 import Meetup from '../models/Meetup';
 import User from '../models/User';
+import File from '../models/File';
 import Notification from '../schemas/Notification';
 import Mail from '../../lib/Mail';
 
@@ -12,7 +13,7 @@ class SubscriptionController {
     async index(req, res) {
         const subscriptions = await Subscription.findAll({
             where: { user_id: req.userId },
-            attributes: ['meetup_id'],
+            attributes: ['id', 'meetup_id'],
             order: [['meetup', 'date', 'ASC']],
             include: [
                 {
@@ -29,6 +30,11 @@ class SubscriptionController {
                             model: User,
                             as: 'user',
                             attributes: ['id', 'name', 'email'],
+                        },
+                        {
+                            model: File,
+                            as: 'banner',
+                            attributes: ['id', 'url', 'path'],
                         },
                     ],
                 },
@@ -146,6 +152,20 @@ class SubscriptionController {
                 userEmail: user.email,
             },
         });
+
+        return res.json(subscription);
+    }
+
+    async delete(req, res) {
+        const subscription = await Subscription.findOne({
+            where: { id: req.params.id, user_id: req.userId },
+        });
+
+        if (!subscription) {
+            return res.status(400).json({ error: 'Subscription not found' });
+        }
+
+        await subscription.destroy();
 
         return res.json(subscription);
     }
