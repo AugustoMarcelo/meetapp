@@ -68,3 +68,11 @@ Para atualizar a senha, o usuário deve também enviar um campo de confirmação
 
 - Criptografa a senha do usuário para segurança.
 - É realizada a validação dos dados de entrada;
+
+### Rodando a aplicação
+
+ - Para rodar a aplicação, utilize, antes, o comando `yarn`. Ele irá baixar todas as dependências necessárias para o projeto executar. Você também deve ter instalado em sua máquina os bancos de dados `MongoDB` e o `Postgres`;
+ - Cheque o arquivo de configuração do banco de dados (config/database.js) e certifique-se de que os parâmetros estão iguais aos seus;
+ - O Model `File` retorna um campo virtual que representa a URL para visualizar a imagem. Pode ser necessário mudá-lo, caso você não esteja rodando a versão mobile da aplicação via `localhost`. Portanto, insira o ip da sua máquina alterando a URL.
+
+Destarte, tudo estando configurado, basta rodar um `yarn dev`.
