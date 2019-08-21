@@ -18,7 +18,7 @@ class MeetupController {
 
         const parsedDate = parseISO(req.query.date);
 
-        const meetups = await Meetup.findAll({
+        const meetups = await Meetup.findAndCountAll({
             where: {
                 date: {
                     [Op.between]: [
