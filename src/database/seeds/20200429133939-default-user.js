@@ -7,7 +7,7 @@ module.exports = {
       [
         {
           name: 'Marcelo Augusto',
-          email: 'mrclgst10@gmail.com',
+          email: 'admin@meetapp.com',
           password_hash: bcrypt.hashSync('123456', 8),
           created_at: new Date(),
           updated_at: new Date(),
